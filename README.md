@@ -163,17 +163,20 @@ GET    /api/stats/dashboard
 GET    /api/ai/trend
 POST   /api/ai/summary
 POST   /api/rag/reindex
+
 🔍 데이터베이스 구조
 jobs — 채용 공고 데이터
 tech_stats — 기술 통계
 ai_analysis — AI 분석 결과
 job_embeddings — RAG 임베딩
+
 🧯 트러블슈팅
 문제	원인
 통계 API 오류	D1 마이그레이션 미적용
 AI 결과 안 나옴	OPENAI_API_KEY 설정
 크롤 데이터 없음	업로드 API URL 확인
 RAG 검색 안됨	reindex 미실행
+
 📈 배운 점
 AI를 서비스에 적용할 때
 "통제 가능한 구조"가 중요함을 경험
@@ -181,13 +184,16 @@ RAG를 통해
 정확도 + 신뢰성 향상
 서버리스 환경(Cloudflare)에서
 경량 API 설계 경험
+
 🚧 향후 개선
 벡터 DB (Pinecone / Weaviate) 적용
 실시간 데이터 스트리밍
 사용자 맞춤 추천 강화
 배치 기반 임베딩 처리
-📝 프로젝트 소개
 
+
+
+📝 프로젝트 소개
 JobTrend는
 데이터 수집부터 AI 분석까지 한 흐름으로 연결된 시스템을 구현한 프로젝트입니다.
 
