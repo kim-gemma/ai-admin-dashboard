@@ -1,7 +1,3 @@
-// src/api/auth.ts
-import axios from "axios";
-
-export const login = async () => {
-  const res = await axios.post("http://localhost:8082/api/login");
-  return res.data;
-};
+// src/api/login.ts — WebSocket 기반 사용자 추가 (구 HTTP POST /api/users)
+// ※ users.ts 와 통합하여 사용하세요. 하위 호환을 위해 re-export 합니다.
+export { createUser } from "./users";

@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
-import { getUsers, createUser } from "../api/user";
+import { getUsers, createUser, UserItem } from "../api/users"; // WebSocket 기반
 import MainLayout from "../layouts/MainLayout";
 
 function Users() {
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<UserItem[]>([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   const fetchData = async () => {
-    const data = await getUsers();
-    setUsers(data);
+    try {
+      const data = await getUsers();   // WebSocket /ws/users  action: getUsers
+      setUsers(data);
+    } catch (error) {
+      console.error("사용자 목록 조회 실패:", error);
+    }
   };
 
   useEffect(() => {
@@ -17,11 +21,14 @@ function Users() {
   }, []);
 
   const handleAdd = async () => {
-    const newUser = await createUser({ name, email });
-
-    setUsers((prev) => [...prev, newUser]);
-    setName("");
-    setEmail("");
+    try {
+      const newUser = await createUser({ name, email }); // WebSocket /ws/users  action: addUser
+      setUsers((prev) => [...prev, newUser]);
+      setName("");
+      setEmail("");
+    } catch (error) {
+      console.error("사용자 추가 실패:", error);
+    }
   };
 
   return (
